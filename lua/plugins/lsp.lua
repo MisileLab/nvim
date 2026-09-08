@@ -4,8 +4,8 @@
 --- To customise a server, drop a file in after/lsp/<name>.lua ("after" so it
 --- wins over nvim-lspconfig's own lsp/ definition).
 local servers = {
-  "lua_ls", "bashls", "jsonls", "yamlls", "taplo", "marksman",
-  "ts_ls", "svelte", "astro", "tailwindcss",
+  "lua_ls", "bashls", "jsonls", "yamlls", "tombi", "marksman",
+  "tsc", "svelte", "astro", "tailwindcss",
   -- rust_analyzer is owned by rustaceanvim, see lua/plugins/rust.lua
   "clangd", "zls", "gopls",
   "ty", "ruff",
@@ -36,9 +36,21 @@ return {
     -- that could clobber anything.
     "neovim/nvim-lspconfig",
     lazy = false,
-    dependencies = { "Saghen/blink.cmp", "Chaitanyabsprip/fastaction.nvim" },
+    dependencies = {
+      "Saghen/blink.cmp",
+      "Chaitanyabsprip/fastaction.nvim",
+      "b0o/SchemaStore.nvim",
+    },
     config = function()
       vim.lsp.config("*", { root_markers = { ".git" } })
+      vim.lsp.config("jsonls", {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
 
       local enabled, skipped = {}, {}
       for _, name in ipairs(servers) do

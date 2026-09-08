@@ -11,6 +11,7 @@ return {
     cmd = "Octo",
     opts = {},
     keys = {
+      { "<leader>gh", "<cmd>Octo<CR>", desc = "GitHub actions" },
       { "<leader>go", "<cmd>Octo<CR>", desc = "Octo actions" },
       { "<leader>gpl", "<cmd>Octo pr list<CR>", desc = "List PRs" },
       { "<leader>gpc", "<cmd>Octo pr create<CR>", desc = "Create PR" },

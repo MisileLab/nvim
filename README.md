@@ -23,7 +23,7 @@ Then `:TSUpdate`, restart, `:checkhealth`.
 | C compiler, `curl`, `tar` | parser builds |
 | `ripgrep` | `mini.pick` live grep |
 | Nerd Font | icons |
-| `stylua`, `prettierd`, … | only the formatters you use |
+| `stylua`, `oxfmt`, … | only the formatters you use |
 
 ## Layout
 
@@ -112,11 +112,18 @@ Leader is `<Space>`; `mini.clue` shows the rest as you type.
 |---|---|
 | `<leader>ff` / `fg` / `fb` | files / grep / buffers |
 | `<leader>e` | file explorer |
+| `<leader>bn` / `bp` / `bd` | next / previous / delete buffer |
+| `<leader>wh` / `wv` | split horizontally / vertically |
+| `<leader>we` / `wc` | equalize / close windows |
+| `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | focus window left / down / up / right |
+| `<leader>ww` | focus next window |
 | `<leader>cf` / `cl` / `ch` | format / run code lens / inlay hints |
 | `<leader>cw` | workspace diagnostics → quickfix |
 | `<leader>sr` / `sw` | project find & replace |
 | `<leader>db` / `dc` | breakpoint / continue |
 | `<leader>Tr` / `Td` | run / debug nearest test |
+| `<leader>gg` / `gc` / `gl` | Git status / commit / history (Neogit) |
+| `<leader>gh` | GitHub actions (Octo) |
 | `<C-Down>` / `<C-Up>` | add cursor below / above |
 | `<leader>mn` / `mA` | cursor at next match / all matches |
 | `s` / `S` | flash / flash treesitter |
@@ -141,7 +148,7 @@ yank. `<Esc>` clears multicursors first, then search highlight.
 | `indent-blankline` + `mini-indentscope` (both!) | `mini.indentscope` |
 | `neo-tree` | `mini.files` |
 | `lualine` + `bufferline` | `mini.statusline`, `laststatus=3` |
-| `none-ls` / `eslint` extras | `nvim-lint` |
+| `none-ls` lint extras | `nvim-lint` |
 | `toggleterm` | `<leader>t` |
 | `impatient` | `vim.loader` (zpack enables it) |
 | project config plugins | `exrc` + `lua/override.lua` |

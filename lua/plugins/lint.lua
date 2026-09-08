@@ -1,5 +1,5 @@
 -- Async linting for tools that aren't language servers. Replaces the
--- none-ls / eslint extras from the old config with something far lighter.
+-- none-ls extras from the old config with something far lighter.
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPost", "BufNewFile" },
@@ -10,9 +10,12 @@ return {
       markdown = { "markdownlint-cli2" },
       dockerfile = { "hadolint" },
       sh = { "shellcheck" },
-      javascript = { "eslint_d" },
-      typescript = { "eslint_d" },
-      svelte = { "eslint_d" },
+      javascript = { "oxlint" },
+      javascriptreact = { "oxlint" },
+      typescript = { "oxlint" },
+      typescriptreact = { "oxlint" },
+      svelte = { "oxlint" },
+      astro = { "oxlint" },
     }
 
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {

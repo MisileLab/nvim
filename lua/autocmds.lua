@@ -24,6 +24,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- Treesitter highlighting + folds. In 0.12 this is core -- nvim-treesitter
 -- only supplies the parsers and queries, it does not turn anything on.
+-- JSON with comments uses the JSON parser; nvim-treesitter does not ship a
+-- separate `jsonc` parser.
+vim.treesitter.language.register("json", "jsonc")
+
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("treesitter"),
   callback = function(ev)
@@ -84,12 +88,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- 0.12 renders code lens as virtual LINES rather than cramped virtual
     -- text, which makes it a real replacement for symbol-usage.nvim.
     if client:supports_method("textDocument/codeLens") then
-      vim.lsp.codelens.refresh({ bufnr = ev.buf })
+      vim.lsp.codelens.enable(true, { bufnr = ev.buf })
       vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "TextChanged" }, {
         group = vim.api.nvim_create_augroup("cfg_codelens_" .. ev.buf, { clear = true }),
         buffer = ev.buf,
         callback = function()
-          vim.lsp.codelens.refresh({ bufnr = ev.buf })
+          vim.lsp.codelens.enable(true, { bufnr = ev.buf })
         end,
       })
       vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, { buffer = ev.buf, desc = "Run code lens" })

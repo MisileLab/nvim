@@ -34,7 +34,6 @@ return {
     })
 
     require("mini.misc").setup()
-    MiniMisc.setup_auto_root()
 
     require("mini.pick").setup({ window = { config = { border = "rounded" } } })
     require("mini.files").setup({ windows = { preview = true, width_preview = 60 } })
@@ -67,7 +66,8 @@ return {
         { mode = "n", keys = "<Leader>s", desc = "+search/replace" },
         { mode = "n", keys = "<Leader>m", desc = "+multicursor" },
         { mode = "n", keys = "<Leader>p", desc = "+project" },
-        { mode = "n", keys = "<Leader>g", desc = "+github" },
+        { mode = "n", keys = "<Leader>g", desc = "+git/github" },
+        { mode = "n", keys = "<Leader>w", desc = "+window" },
       },
       window = { config = { border = "rounded" } },
     })
@@ -75,7 +75,9 @@ return {
     local map = vim.keymap.set
     map("n", "<leader>ff", "<cmd>Pick files<CR>", { desc = "Find files" })
     map("n", "<leader>fg", "<cmd>Pick grep_live<CR>", { desc = "Grep" })
-    map("n", "<leader>fb", "<cmd>Pick buffers<CR>", { desc = "Buffers" })
+    map("n", "<leader>fb", function()
+      MiniPick.builtin.buffers({ include_current = false })
+    end, { desc = "Find buffers" })
     map("n", "<leader>fh", "<cmd>Pick help<CR>", { desc = "Help" })
     map("n", "<leader>fd", "<cmd>Pick diagnostic<CR>", { desc = "Diagnostics" })
     map("n", "<leader>fr", "<cmd>Pick resume<CR>", { desc = "Resume last pick" })

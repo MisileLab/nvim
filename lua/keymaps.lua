@@ -32,14 +32,21 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Window navigation
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+map("n", "<C-h>", "<C-w>h", { desc = "Focus window left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Focus window below" })
+map("n", "<C-k>", "<C-w>k", { desc = "Focus window above" })
+map("n", "<C-l>", "<C-w>l", { desc = "Focus window right" })
+map("n", "<leader>ww", "<C-w>w", { desc = "Focus next window" })
+map("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split horizontally" })
+map("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Split vertically" })
+map("n", "<leader>we", "<C-w>=", { desc = "Equalize windows" })
+map("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window" })
 
 -- Buffers
 map("n", "<S-h>", "<cmd>bprevious<CR>")
 map("n", "<S-l>", "<cmd>bnext<CR>")
+map("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Next buffer" })
 map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 
 -- Line moving is mini.move (<A-hjkl>), see plugin/mini.lua

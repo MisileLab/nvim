@@ -1,5 +1,13 @@
 local o = vim.o
 
+-- Use Nushell for :terminal, :!, filters, and other external commands.
+o.shell = "nu"
+o.shellcmdflag = "-c"
+o.shellredir = "out+err> %s"
+o.shellpipe = "out+err> %s"
+o.shellquote = ""
+o.shellxquote = ""
+
 -- Indentation (carried over from your old config)
 o.tabstop = 2
 o.shiftwidth = 2

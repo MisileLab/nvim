@@ -46,7 +46,7 @@ silently skips any whose binary is absent:
 
 ```
 lua-language-server  bash-language-server  gopls  clangd  zls
-rust-analyzer  ruff  ty  typescript-language-server  taplo  marksman
+rust-analyzer  ruff  ty  typescript>=7  tombi  marksman
 ```
 
 Run `:LspSkipped` any time to see which configured servers have no binary.
@@ -54,7 +54,7 @@ Run `:LspSkipped` any time to see which configured servers have no binary.
 **Formatters and linters** (only what you need):
 
 ```
-stylua  prettierd  shfmt  shellcheck  hadolint  markdownlint-cli2  eslint_d
+stylua  oxfmt  oxlint  shfmt  shellcheck  hadolint  markdownlint-cli2
 ```
 
 **Debug adapters** (only if you debug that language):
@@ -92,7 +92,7 @@ rather than the `<leader>c` group LazyVim used.
 | `<leader>,` buffers | `<leader>fb` | |
 | `<leader>e` neo-tree sidebar | `<leader>e` mini.files | **not a sidebar** — see below |
 | `<leader>l` `:Lazy` | `:Z` | `:Z update`, `:Z sync`, `:Z clean` |
-| `<leader>gg` lazygit | — | not installed; `<leader>gd` for `:Diff` |
+| `<leader>gg` lazygit | `<leader>gg` | Neogit status; `<leader>gd` remains `:Diff` |
 | `<leader>xx` trouble | `<leader>fd` / `<leader>cw` | diagnostics picker / workspace → quickfix |
 | `<leader>uf` toggle autoformat | — | format-on-save is off; `<leader>cf` is explicit |
 
@@ -133,7 +133,9 @@ core 0.12. Great for grabbing a whole function or a nested block.
 **Formatting** — `<leader>cf`. It never runs on save.
 
 **Git** — `mini.diff` shows hunks in the gutter. `<leader>gd` opens `:Diff`.
-Hunk textobjects come from mini.diff; `]h`/`[h` via mini.bracketed.
+Hunk textobjects come from mini.diff; `]h`/`[h` via mini.bracketed. Neogit is
+the interactive repository UI: `<leader>gg` opens status, `<leader>gc` opens
+the commit popup, and `<leader>gl` opens history.
 
 ---
 
