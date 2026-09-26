@@ -1,6 +1,6 @@
 --- Servers you want on. Installed with your system package manager, not mason.
 --- Listing one that isn't installed is harmless -- it's skipped silently.
---- Adding a new language is one line here.
+--- Check dedicated language plugins first; see AGENTS.md.
 --- To customise a server, drop a file in after/lsp/<name>.lua ("after" so it
 --- wins over nvim-lspconfig's own lsp/ definition).
 local servers = {
@@ -9,6 +9,7 @@ local servers = {
   -- rust_analyzer is owned by rustaceanvim, see lua/plugins/rust.lua
   "clangd", "zls", "gopls",
   "ty", "ruff",
+  -- powershell.nvim owns powershell_es, see lua/plugins/powershell.lua
   "hls", "nushell", "vala_ls", "dartls",
   "kotlin_language_server", "omnisharp", "ruby_lsp", "metals", "nil_ls",
 }

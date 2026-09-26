@@ -141,7 +141,10 @@ the commit popup, and `<leader>gl` opens history.
 
 ## 5. Picking up a new language
 
-The whole point of the LSP setup. Say you're trying Gleam:
+First search for a dedicated Neovim language plugin, then check maintenance,
+compatibility, and usability as described in `AGENTS.md`. Prefer a maintained,
+usable plugin and let it own its server. If none qualifies, use the direct LSP
+setup below, with Gleam as an example:
 
 ```sh
 # 1. install the server however your distro provides it

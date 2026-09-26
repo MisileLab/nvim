@@ -95,14 +95,40 @@ Predictions are requested automatically 1500ms after edits settle:
 
 ## Adding a language
 
-1. Install the server with your package manager.
-2. Add its lspconfig name to `servers` in `lua/plugins/lsp.lua`.
+1. Search for a dedicated Neovim language plugin and check its maintenance,
+   compatibility, and usability (see `AGENTS.md`). Prefer a usable, maintained plugin.
+2. If none exists or available plugins are unmaintained or unusable, install
+   the server and add its lspconfig name to `servers` in `lua/plugins/lsp.lua`.
+   Do not also enable servers owned by a language plugin.
 3. `:TSInstall <lang>` (or add it to `lua/plugins/treesitter.lua`).
 4. Formatter in `lua/plugins/format.lua`, linter in `lua/plugins/lint.lua`.
 
 Servers with no binary on `PATH` are skipped silently — list things
 speculatively. `:LspSkipped` shows what's missing. Per-server tweaks go in
 `after/lsp/<name>.lua`; `after/` wins over lspconfig's own `lsp/`.
+
+### PowerShell
+
+`.ps1`, `.psm1`, and `.psd1` files load
+[powershell.nvim](https://github.com/TheLeoP/powershell.nvim), which owns the
+language server, extension terminal, evaluation, and PowerShell debug adapter.
+The `powershell` parser supplies highlighting, folds, and indentation.
+
+Install PowerShell (`pwsh` on `PATH`), then extract
+[PowerShellEditorServices.zip](https://github.com/PowerShell/PowerShellEditorServices/releases)
+into `stdpath("data") .. "/powershell-editor-services"`. On a default macOS/Linux
+install, the resulting script path is:
+
+```text
+~/.local/share/nvim/powershell-editor-services/PowerShellEditorServices/Start-EditorServices.ps1
+```
+
+For another location, change `bundle_path` in `lua/plugins/powershell.lua`.
+Restart Neovim to install the plugin and parser, then open a PowerShell file.
+`<leader>cf` formats through LSP; `<leader>dc` opens the plugin's debug choices.
+`:lua require("powershell").toggle_term()` toggles the extension terminal;
+`:lua require("powershell").eval()` evaluates the current line.
+The plugin manages its own server, so it is not listed by `:LspSkipped`.
 
 ## Keymaps
 

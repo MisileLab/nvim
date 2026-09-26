@@ -1,5 +1,5 @@
 local ENDPOINT = "https://ais.misile.xyz/v1/chat/completions"
-local MODEL = "gpt-5.6-luna"
+local MODEL = "gpt-6-luna"
 local API_KEY_ENV = "AIS_API_KEY"
 local DUET_AUTO_DELAY = 1500
 
